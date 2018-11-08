@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-rss",
   "version": "1.0.0",
-  "description": "Fork of Johnathan Dublin's RSS source plugin for GatsbyJS",
+  "description": "Fork of Johnathan Dublin's RSS source plugin for GatsbyJS to include custom fields",
   "scripts": {
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",

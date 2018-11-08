@@ -1,5 +1,7 @@
 # gatsby-source-rss
 
+Fork of the `gatsby-source-rss` plugin to allow for custom RSS fields.
+
 ## Usage
 
 Add the following to your `gatsby-config.js`
