@@ -1,22 +1,22 @@
 {
   "name": "gatsby-source-rss",
   "version": "1.0.0",
-  "description": "Gatsby source plugin for building websites using RSS feeds as a data source",
+  "description": "Fork of Johnathan Dublin's RSS source plugin for GatsbyJS",
   "scripts": {
     "build": "babel src --out-dir .",
     "watch": "babel -w src --out-dir .",
     "lint": "eslint src/"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/jondubin/gatsby-source-rss.git"
+    "type": "git",
+    "url": "https://github.com/jondubin/gatsby-source-rss.git"
   },
   "keywords": [
     "gatsby",
     "gatsby-plugin",
     "gatsby-source-plugin"
   ],
-  "author": "Jonathan Dubin <jonathan.dubin@gmail.com>",
+  "author": "Jordan Rhea <jordan@jordanrhea.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -27,6 +27,6 @@
     "eslint-plugin-react": "^7.1.0"
   },
   "dependencies": {
-    "rss-parser": "^2.10.1"
+    "rss-parser": "^3.5.3"
   }
 }

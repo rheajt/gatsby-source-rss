@@ -1,55 +1,67 @@
-const parser = require('rss-parser');
+const Parser = require('rss-parser');
 const crypto = require('crypto');
 
-const createContentDigest = obj => crypto.createHash('md5').update(JSON.stringify(obj)).digest('hex');
+const createContentDigest = obj => crypto
+  .createHash('md5')
+  .update(JSON.stringify(obj))
+  .digest('hex');
 
-function promisifiedParseURL(url) {
+function promisifiedParseURL(url, customFields) {
+  // console.log(customFields);
+  const parser = new Parser({
+    customFields,
+  });
   return new Promise((resolve, reject) => {
     parser.parseURL(url, (err, data) => {
       if (err) {
         reject(err);
       }
-      resolve(data.feed);
+      resolve(data);
     });
   });
 }
 
-const createChildren = (entries, parentId, createNode) => {
+const createChildren = (items, parentId, createNode) => {
   const childIds = [];
-  entries.forEach(entry => {
+  items.forEach((entry) => {
     childIds.push(entry.link);
-    const node = Object.assign({}, entry, {
+    const node = {
+      ...entry,
       id: entry.link,
       title: entry.title,
       link: entry.link,
       description: entry.description,
       parent: parentId,
-      children: []
-    });
+      children: [],
+    };
+
     node.internal = {
       type: 'rssFeedItem',
-      contentDigest: createContentDigest(node)
+      contentDigest: createContentDigest(node),
     };
     createNode(node);
   });
   return childIds;
 };
 
-async function sourceNodes({ boundActionCreators }, { rssURL }) {
-  const { createNode } = boundActionCreators;
-  const data = await promisifiedParseURL(rssURL);
+async function sourceNodes({ actions }, { rssURL, customFields }) {
+  const { createNode } = actions;
+  const data = await promisifiedParseURL(rssURL, customFields);
   if (!data) {
     return;
   }
-  const { title, description, link, entries } = data;
-  const childrenIds = createChildren(entries, link, createNode);
+  const {
+    title, description, link, items,
+  } = data;
+
+  const childrenIds = createChildren(items, link, createNode);
   const feedStory = {
     id: link,
     title,
     description,
     link,
     parent: null,
-    children: childrenIds
+    children: childrenIds,
   };
 
   feedStory.internal = { type: 'rssFeed', contentDigest: createContentDigest(feedStory) };

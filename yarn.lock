@@ -1875,12 +1875,13 @@ rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.6.1:
   dependencies:
     glob "^7.0.5"
 
-rss-parser@^2.10.1:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/rss-parser/-/rss-parser-2.11.0.tgz#2641f5a628b61b61d575b09df4c284a5b7e87c2e"
+rss-parser@^3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/rss-parser/-/rss-parser-3.5.3.tgz#4b125c44371eafbd1150479188c0f33bf02e6e92"
+  integrity sha512-oByqqKTuB6tCg/4UTPXUpJmG4Wr+H72qsBcSnBZM9nH1NhjV8lXzx8uKibN9Sq+mZwwZQyOitjoQvZ/ePsttKA==
   dependencies:
     entities "^1.1.1"
-    xml2js "^0.4.17"
+    xml2js "^0.4.19"
 
 run-async@^0.1.0:
   version "0.1.0"
@@ -2182,9 +2183,10 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-xml2js@^0.4.17:
+xml2js@^0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
